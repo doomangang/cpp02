@@ -30,20 +30,28 @@ public:
 	float               toFloat( void ) const;
 	int                 toInt( void ) const;
 	Fixed&              operator=(const Fixed &other);
+
+	// 6 comparison operators (overloaded)
 	bool                operator>(const Fixed &other) const;
 	bool                operator<(const Fixed &other) const;
 	bool                operator>=(const Fixed &other) const;
 	bool                operator<=(const Fixed &other) const;
 	bool                operator==(const Fixed &other) const;
 	bool                operator!=(const Fixed &other) const;
+
+	// 4 arithmetic operators (overloaded)
 	Fixed               operator+(const Fixed &other) const;
 	Fixed               operator-(const Fixed &other) const;
 	Fixed               operator*(const Fixed &other) const;
 	Fixed               operator/(const Fixed &other) const;
+
+	//4 increment/decrement operators (overloaded)
 	Fixed&              operator++(void);
 	const Fixed         operator++(int);
 	Fixed&              operator--(void);
 	const Fixed         operator--(int);
+
+	// 4 min/max member functions (overloaded)
 	static Fixed&       min(Fixed& ref1, Fixed& ref2);
 	static const Fixed& min(Fixed const& ref1, Fixed const& ref2);
 	static Fixed&       max(Fixed& ref1, Fixed& ref2);
