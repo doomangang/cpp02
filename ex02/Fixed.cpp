@@ -14,48 +14,48 @@
 
 Fixed::Fixed() : _value(0)
 {
-	//std::cout << "Default constructor called\n";
+	std::cout << "Default constructor called\n";
 }
 
 Fixed::Fixed(const Fixed &other)
 {
-	//std::cout << "Copy constructor called\n";
+	std::cout << "Copy constructor called\n";
 	*this = other;
 }
 
 Fixed::Fixed(const int intNum)
 {
-	//std::cout << "Int constructor called\n";
+	std::cout << "Int constructor called\n";
 	_value = intNum << _fractionalBits;
 }
 
 Fixed::Fixed(const float floatNum)
 {
-	//std::cout << "Float constructor called\n";
+	std::cout << "Float constructor called\n";
 	_value = roundf(floatNum * (1 << _fractionalBits));
 }
 
 Fixed::~Fixed()
 {
-	//std::cout << "Destructor called\n";
+	std::cout << "Destructor called\n";
 }
 
 Fixed& Fixed::operator=(const Fixed &other)
 {
-	//std::cout << "Copy assignment operator called\n";
+	std::cout << "Copy assignment operator called\n";
 	_value = (int)(other.toFloat() * (1 << _fractionalBits));
 	return *this;
 }
 
 int Fixed::getRawBits( void ) const
 {
-	//std::cout << "getRawBits member function called\n";
+	std::cout << "getRawBits member function called\n";
 	return _value;
 }
 
 void Fixed::setRawBits( int const raw )
 {
-	//std::cout << "setRawBits member function called\n";
+	std::cout << "setRawBits member function called\n";
 	_value = raw;
 }
 
@@ -75,87 +75,87 @@ std::ostream& operator <<(std::ostream &out, const Fixed &fixed)
 	return out;
 }
 
-bool                Fixed::operator>(const Fixed &other) const
+bool    Fixed::operator>(const Fixed &other) const
 {
 	return (this->getRawBits() > other.getRawBits());
 }
 
-bool                Fixed::operator<(const Fixed &other) const
+bool    Fixed::operator<(const Fixed &other) const
 {
 	return (this->getRawBits() < other.getRawBits());
 }
 
-bool                Fixed::operator>=(const Fixed &other) const
+bool    Fixed::operator>=(const Fixed &other) const
 {
 	return (this->getRawBits() >= other.getRawBits());
 }
 
-bool                Fixed::operator<=(const Fixed &other) const
+bool    Fixed::operator<=(const Fixed &other) const
 {
 	return (this->getRawBits() <= other.getRawBits());
 }
 
-bool                Fixed::operator==(const Fixed &other) const
+bool    Fixed::operator==(const Fixed &other) const
 {
 	return (this->getRawBits() == other.getRawBits());
 }
 
-bool                Fixed::operator!=(const Fixed &other) const
+bool    Fixed::operator!=(const Fixed &other) const
 {
 	return (this->getRawBits() != other.getRawBits());
 }
 
-Fixed              Fixed::operator+(const Fixed &other) const
+Fixed Fixed::operator+(const Fixed &other) const
 {
 	Fixed   result(this->toFloat() + other.toFloat());
 	return (result);
 }
 
-Fixed              Fixed::operator-(const Fixed &other) const
+Fixed Fixed::operator-(const Fixed &other) const
 {
-	Fixed   result(this->toFloat() + other.toFloat());
+	Fixed   result(this->toFloat() - other.toFloat());
 	return (result);
 }
 
-Fixed              Fixed::operator*(const Fixed &other) const
+Fixed Fixed::operator*(const Fixed &other) const
 {
 	Fixed   result(this->toFloat() * other.toFloat());
 	return (result);
 }
 
-Fixed              Fixed::operator/(const Fixed &other) const
+Fixed Fixed::operator/(const Fixed &other) const
 {
 	Fixed   result(this->toFloat() / other.toFloat());
 	return (result);
 }
 
-Fixed&              Fixed::operator++(void)
+Fixed& Fixed::operator++(void)
 {
 	_value++;
 	return (*this);
 }
 
-const Fixed         Fixed::operator++(int)
+const Fixed Fixed::operator++(int)
 {
 	const Fixed copy = Fixed(*this);
 	_value++;
 	return (copy);
 }
 
-Fixed&              Fixed::operator--(void)
+Fixed& Fixed::operator--(void)
 {
 	_value--;
 	return (*this);
 }
 
-const Fixed         Fixed::operator--(int)
+const Fixed Fixed::operator--(int)
 {
 	const Fixed copy = Fixed(*this);
 	_value--;
 	return (copy);
 }
 
-Fixed&       Fixed::min(Fixed& ref1, Fixed& ref2)
+Fixed& Fixed::min(Fixed& ref1, Fixed& ref2)
 {
 	if (ref1 < ref2)
 		return ref1;
@@ -168,7 +168,7 @@ const Fixed& Fixed::min(Fixed const& ref1, Fixed const& ref2)
 	return ref2;
 }
 
-Fixed&       Fixed::max(Fixed& ref1, Fixed& ref2)
+Fixed& Fixed::max(Fixed& ref1, Fixed& ref2)
 {
 	if (ref1 > ref2)
 		return ref1;

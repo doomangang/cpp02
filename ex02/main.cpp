@@ -33,11 +33,13 @@ int main( void ) {
 	Fixed const copyB(b);
 	Fixed c( Fixed( 5.05f ) / Fixed( 2 ) );
 	Fixed const d( Fixed( 5.05f ) + Fixed( 2 ) );
+	Fixed const e( Fixed( 5.05f ) - Fixed( 2 ) );
 
 	std::cout << "a\t=" << a << std::endl;
 	std::cout << "b\t=" << b << std::endl;
 	std::cout << "c\t=" << c << std::endl;
 	std::cout << "d\t=" << d << std::endl;
+	std::cout << "e\t=" << e << std::endl;
 	std::cout << "copyB\t=" << copyB << std::endl << std::endl;
 	
 	if (a < b)
@@ -45,9 +47,9 @@ int main( void ) {
 	if (d >= c)
 		std::cout << "c is the smaller one:\t" << "c=" << c << "\td=" << d  << std::endl;
 	if (b == copyB)
-		std::cout << "a and copyB are the same:\t" << "b=" << b << "\tcopyB=" << copyB << std::endl;
-	if (b != c)
-		std::cout << "b and c are not the same:\t" << "b=" << a << "\tc=" << c << std::endl;
+		std::cout << "b and copyB are the same:\t" << "b=" << b << "\tcopyB=" << copyB << std::endl;
+	if (d != e)
+		std::cout << "d and e are not the same:\t" << "d=" << d << "\te=" << e << std::endl;
 
 	std::cout << std::endl << "decrement a and c" << std::endl;
 	std::cout << --a << std::endl;
